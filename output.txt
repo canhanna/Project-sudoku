@@ -1,0 +1,10 @@
+arr{1} = 4 
+arr{2} = 6 
+arr{3} = 73 
+arr{4} = 90 
+arr{5} = 20 
+arr{6} = 4 
+arr{7} = 7 
+arr{8} = 2 
+arr{9} = 9 
+hello
