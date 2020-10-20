@@ -35,32 +35,39 @@ end
 function [ flag ] = ConflictTest( A,row_i,col_j, x, n )
 flag = 0;
 size = n * n;
+A(row_i, col_j) = x;
 %% Column test
+demcol = zeros(size, 1);
 for ii = 1:size
-   if ii~=row_i
-      if A(ii,col_j) == x
-          return
-      end
+   if A(ii, col_j) ~= 0
+       demcol(A(ii, col_j), 1) = demcol(A(ii, col_j), 1) + 1;
+       if demcol(A(ii, col_j), 1) > 1
+           return
+       end
    end
 end
 
 %% Row test
+demrow = zeros(1, size);
 for jj = 1:size
-    if jj~=col_j
-        if A(row_i,jj) == x
+    if A(row_i,jj) ~= 0
+        demrow(1, A(row_i,jj)) = demrow(1, A(row_i,jj)) + 1;
+        if demrow(1, A(row_i,jj)) > 1
            return 
         end
     end
 end
 %% 3x3 grid tests
+dem = zeros(1, size);
 modRow = mod(row_i-1,n);
 modCol = mod(col_j-1,n);
 row_l  = row_i - modRow;
 col_l  = col_j - modCol;
 for ii = row_l:row_l+n-1
     for jj = col_l:col_l+n-1
-        if(ii~=row_i) || (jj~=col_j)
-           if A(ii,jj) == x
+        if A(ii,jj) ~= 0
+            dem(1, A(ii, jj)) = dem(1, A(ii, jj)) + 1;
+           if dem(1, A(ii, jj)) > 1
               return 
            end
         end
