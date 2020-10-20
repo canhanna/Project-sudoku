@@ -12,5 +12,12 @@ for ii = 1:9
         end
     end
 end
+
 A_sol = SudokuBacktracker(A, 1, 1);
+
+if (A_sol == A)
+    disp("Cannot be solved!")
+    return
+end
+
 disp(A_sol);

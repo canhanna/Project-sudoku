@@ -35,9 +35,7 @@ end
 %% Solve my Sudoku
 A_sol = SudokuBacktracker(A, 1, 1);
 if A == A_sol
-    set(sudokugui.status,'string','Cannot be solved!')
-    return
-end
+    set(sudokugui.status,'string','CONFLICT')
 %% Prompt the user that Sudoku is solved
 set(sudokugui.status,'string','SOLVED')
 for ii = 1:9
